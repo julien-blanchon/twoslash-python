@@ -3,15 +3,15 @@
 [![npm version](https://badge.fury.io/js/twoslash-python.svg)](https://www.npmjs.com/package/twoslash-python)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A powerful tool that brings TypeScript-like type information and documentation capabilities to Python code blocks. This package extends the Twoslash syntax to work with Python, enabling rich, interactive code documentation with type information, hover states, and more.
+A Shiki transformer that brings Python Language Server Protocol (LSP) powered type information and documentation to your code blocks. This package extends Shiki's capabilities to work with Python, enabling rich, interactive code documentation with type information, hover states, and more.
 
 ## Features
 
-- 🐍 Python syntax highlighting with type information
+- 🐍 Python code blocks with LSP-powered type information
 - 💡 Hover tooltips showing type information and documentation
-- 🔍 Automatic type inference and display
-- 🎨 Customizable themes and styling
-- 📚 Compatible with popular documentation frameworks
+- 🔍 Error highlighting and diagnostics
+- 🎨 Seamless integration with Shiki themes
+- 📚 Compatible with modern documentation frameworks
 
 ## Installation
 
@@ -21,78 +21,104 @@ npm install twoslash-python
 yarn add twoslash-python
 # or
 pnpm add twoslash-python
+# or
+bun add twoslash-python
 ```
 
 ## Usage
 
-```typescript
-import { createPythonTwoslasher } from 'twoslash-python';
+The package provides several components that work together to enable Python LSP features in your code blocks:
 
-const code = `
-# @python
+```typescript
+import {
+  createTwoslasherPython,
+  transformerTwoslashPython,
+  rendererRichPython,
+  renderMarkdown,
+  renderMarkdownInline
+} from 'twoslash-python';
+
+// Create a Shiki transformer with Python LSP support
+const transformer = transformerTwoslashPython({
+  // Enable explicit trigger with `twoslash` comment
+  explicitTrigger: true,
+
+  // Configure the renderer
+  renderer: rendererRichPython({
+    renderMarkdown,
+    renderMarkdownInline
+  }),
+
+  // Specify supported languages
+  langs: ['python'],
+  langAlias: {
+    python: 'python'
+  },
+
+  // Configure the twoslasher
+  twoslasher: createTwoslasherPython({})
+});
+```
+
+### Using in Documentation
+
+In your documentation, add the `twoslash` marker to Python code blocks you want to enhance:
+
+```markdown
+```python twoslash
 def greet(name: str) -> str:
+    """Greet a person by name.
+
+    Args:
+        name: The person's name
+
+    Returns:
+        A greeting message
+    """
     return f"Hello, {name}!"
-`;
-
-const result = createPythonTwoslasher(code);
+```
 ```
 
-## Configuration
-
-The package can be configured with various options:
-
-```typescript
-const options = {
-  theme: 'github-dark',
-  showTypes: true,
-  hoverPreview: true,
-  // ... other options
-};
-
-const result = createPythonTwoslasher(code, options);
-```
+The transformer will:
+1. Process the code through the Python Language Server
+2. Extract type information and documentation
+3. Add interactive hover tooltips
+4. Highlight any errors or warnings
+5. Render the enhanced code block with Shiki
 
 ## API Reference
 
-### `createPythonTwoslasher(code: string, options?: TwoslashOptions)`
+### `createTwoslasherPython(options?: CreateTwoslashPythonOptions)`
 
-Creates a new Twoslash instance for Python code.
+Creates a Python-specific twoslasher instance that processes code through the Python Language Server.
 
-#### Parameters:
-- `code`: The Python source code to process
-- `options`: Optional configuration object
+#### Options:
+- `eslintConfig`: ESLint configuration for code analysis
+- `debugShowGeneratedCode`: Show generated code in output (default: false)
 
-#### Returns:
-- Processed code with type information and hover states
+### `transformerTwoslashPython(options: TransformerTwoslashPythonOptions)`
+
+Creates a Shiki transformer that processes Python code blocks.
+
+#### Options:
+- `explicitTrigger`: Enable explicit triggering with `twoslash` marker (boolean | RegExp)
+- `renderer`: Configure how the enhanced code is rendered
+- `langs`: Array of supported languages (default: ['python'])
+- `langAlias`: Language alias mappings
+- `twoslasher`: The twoslasher instance to use
+
+### `rendererRichPython(options?: RendererRichOptionsPython)`
+
+Configures how the enhanced code blocks are rendered.
+
+#### Options:
+- `renderMarkdown`: Function to render markdown content
+- `renderMarkdownInline`: Function to render inline markdown
+- Additional styling and rendering options
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
-
-# Run tests
-npm test
-
-# Format code
-npm run format
-
-# Lint code
-npm run lint
-```
 
 ## License
 
@@ -100,5 +126,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Built on top of the excellent [Shiki](https://github.com/shikijs/shiki) syntax highlighter
-- Inspired by TypeScript's [Twoslash](https://www.typescriptlang.org/dev/twoslash/) syntax
+- Built on top of [Shiki](https://shiki.style/), the beautiful syntax highlighter
+- Inspired by [TypeScript's Twoslash](https://www.typescriptlang.org/dev/twoslash/)
+- Uses [Python Language Server](https://github.com/python-lsp/python-lsp-server) for type information and documentation
