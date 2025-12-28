@@ -64,7 +64,6 @@
     "@shikijs/core": "^3.2.1",
     "@shikijs/types": "^3.2.1",
     "@typescript/twoslash": "^3.2.9",
-    "twoslash-python": "file:twoslash-python-0.0.1.tgz"
   },
   "engines": {
     "node": ">=16.0.0"
