@@ -104,7 +104,7 @@
 					<strong>Generate hover data</strong>
 					<p>
 						Run <code>pytwoslash</code> on your Python source file. It starts a language server via
-						<a href="https://github.com/microsoft/monitors4codegen">multilspy</a>, walks the AST, and
+						<a href="https://github.com/microsoft/multilspy">multilspy</a>, walks the AST, and
 						fetches hover info for each symbol.
 					</p>
 					<pre><code

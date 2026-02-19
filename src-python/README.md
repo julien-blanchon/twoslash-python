@@ -27,21 +27,21 @@ python main.py <file_path> <project_path> [options]
 
 ### Arguments
 
-| Argument | Description |
-|---|---|
-| `file_path` | Path to the Python file to process |
+| Argument       | Description                               |
+| -------------- | ----------------------------------------- |
+| `file_path`    | Path to the Python file to process        |
 | `project_path` | Path to the Python project root directory |
 
 ### Options
 
-| Option | Default | Description |
-|---|---|---|
-| `-o, --output` | `<file>.nodes.json` | Output JSON file path |
-| `-v, --verbose` | `false` | Enable verbose logging |
-| `--symbol-kinds` | `class,function,variable,base_class,decorator` | Symbol types to include |
-| `--include-all-symbols` | `false` | Include all symbol types |
-| `--hover-timeout` | `10.0` | Max seconds per hover request |
-| `--batch-size` | `20` | Symbols processed per batch |
+| Option                  | Default                                        | Description                   |
+| ----------------------- | ---------------------------------------------- | ----------------------------- |
+| `-o, --output`          | `<file>.nodes.json`                            | Output JSON file path         |
+| `-v, --verbose`         | `false`                                        | Enable verbose logging        |
+| `--symbol-kinds`        | `class,function,variable,base_class,decorator` | Symbol types to include       |
+| `--include-all-symbols` | `false`                                        | Include all symbol types      |
+| `--hover-timeout`       | `10.0`                                         | Max seconds per hover request |
+| `--batch-size`          | `20`                                           | Symbols processed per batch   |
 
 ### Example
 
@@ -59,24 +59,24 @@ python main.py ./example.py /path/to/project --symbol-kinds class function
 ## How It Works
 
 1. **Symbol extraction** (`symbol.py`) -- Parses the Python file using both the tokenizer and AST to find all symbols (functions, classes, variables, decorators, etc.)
-2. **LSP hover** (`main.py`) -- Starts a Python language server via [multilspy](https://github.com/microsoft/monitors4codegen), sends hover requests for each symbol position, and collects type signatures and documentation.
+2. **LSP hover** (`main.py`) -- Starts a Python language server via [multilspy](https://github.com/microsoft/multilspy), sends hover requests for each symbol position, and collects type signatures and documentation.
 3. **JSON output** -- Writes the collected hover nodes as a JSON array compatible with the Shiki `twoslash-python` transformer.
 
 ## Symbol Types
 
-| Type | Description |
-|---|---|
-| `function` | Function and async function definitions, lambdas, calls |
-| `class` | Class definitions |
-| `variable` | Assignments, function parameters, annotated variables |
-| `base_class` | Base classes in class inheritance |
-| `decorator` | Decorator names |
-| `module` | Import statements |
-| `attribute` | Object attributes |
-| `operator` | Binary and unary operators |
-| `keyword` | Python keywords |
-| `constant` | Numbers and strings |
-| `comment` | Comments |
+| Type         | Description                                             |
+| ------------ | ------------------------------------------------------- |
+| `function`   | Function and async function definitions, lambdas, calls |
+| `class`      | Class definitions                                       |
+| `variable`   | Assignments, function parameters, annotated variables   |
+| `base_class` | Base classes in class inheritance                       |
+| `decorator`  | Decorator names                                         |
+| `module`     | Import statements                                       |
+| `attribute`  | Object attributes                                       |
+| `operator`   | Binary and unary operators                              |
+| `keyword`    | Python keywords                                         |
+| `constant`   | Numbers and strings                                     |
+| `comment`    | Comments                                                |
 
 ## Output Format
 

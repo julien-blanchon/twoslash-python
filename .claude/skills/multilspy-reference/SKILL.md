@@ -11,7 +11,7 @@ allowed-tools: Read, Grep, Glob
 
 Multilspy is a Python library that provides a unified interface to Language Server Protocol (LSP) servers for multiple languages. It handles server lifecycle, file management, and LSP request/response marshalling.
 
-Repo: https://github.com/microsoft/multilspy (and eventually https://github.com/microsoft/monitors4codegen)
+Repo: https://github.com/microsoft/multilspy (and eventually https://github.com/microsoft/multilspy)
 
 ## Configuration
 

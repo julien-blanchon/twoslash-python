@@ -11,7 +11,7 @@ Hover over any symbol in a Python code block and get type signatures, docstrings
 
 The project has two parts:
 
-1. **`pytwoslash`** (Python CLI) -- Uses [multilspy](https://github.com/microsoft/monitors4codegen) to spin up a Python language server, walks your code's AST to find symbols, and fetches hover information for each one. Outputs a JSON file of annotated nodes.
+1. **`pytwoslash`** (Python CLI) -- Uses [multilspy](https://github.com/microsoft/multilspy) to spin up a Python language server, walks your code's AST to find symbols, and fetches hover information for each one. Outputs a JSON file of annotated nodes.
 
 2. **`twoslash-python`** (Node.js / Shiki transformer) -- Reads that JSON and injects hover popups, error highlights, and type annotations into Shiki-rendered code blocks.
 
@@ -74,16 +74,16 @@ python main.py <file.py> <project_path> -o output.json
 
 **Arguments:**
 
-| Argument | Description |
-|---|---|
-| `file_path` | Path to the Python file to process |
-| `project_path` | Path to the Python project root (used for LSP resolution) |
-| `-o, --output` | Output JSON file path (default: `<file>.nodes.json`) |
-| `-v, --verbose` | Enable verbose logging |
-| `--symbol-kinds` | Filter symbol types (e.g., `class`, `function`, `variable`) |
-| `--include-all-symbols` | Include all symbol types |
-| `--hover-timeout` | Max seconds per hover request (default: 10) |
-| `--batch-size` | Symbols per LSP batch (default: 20) |
+| Argument                | Description                                                 |
+| ----------------------- | ----------------------------------------------------------- |
+| `file_path`             | Path to the Python file to process                          |
+| `project_path`          | Path to the Python project root (used for LSP resolution)   |
+| `-o, --output`          | Output JSON file path (default: `<file>.nodes.json`)        |
+| `-v, --verbose`         | Enable verbose logging                                      |
+| `--symbol-kinds`        | Filter symbol types (e.g., `class`, `function`, `variable`) |
+| `--include-all-symbols` | Include all symbol types                                    |
+| `--hover-timeout`       | Max seconds per hover request (default: 10)                 |
+| `--batch-size`          | Symbols per LSP batch (default: 20)                         |
 
 **Example:**
 
@@ -100,7 +100,7 @@ import {
   rendererRichPython,
   renderMarkdown,
   renderMarkdownInline,
-} from 'twoslash-python';
+} from "twoslash-python";
 
 const transformer = transformerTwoslashPython({
   explicitTrigger: true,
@@ -108,7 +108,7 @@ const transformer = transformerTwoslashPython({
     renderMarkdown,
     renderMarkdownInline,
   }),
-  langs: ['python'],
+  langs: ["python"],
   twoslasher: createTwoslasherPython({}),
 });
 ```
@@ -133,26 +133,26 @@ Creates a Python twoslasher that reads pre-generated JSON node data.
 
 Returns a Shiki transformer for Python code blocks.
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `twoslasher` | `TwoslashShikiFunctionPython` | *required* | The twoslasher instance |
-| `explicitTrigger` | `boolean \| RegExp` | `false` | Only process blocks with `twoslash` marker |
-| `renderer` | `TwoslashRenderer` | `rendererRichPython()` | Renderer for output |
-| `langs` | `string[]` | `['python']` | Languages to process |
-| `langAlias` | `Record<string, string>` | `{ python: 'python', py: 'python' }` | Language aliases |
-| `throws` | `boolean` | `true` | Throw on errors |
+| Option            | Type                          | Default                              | Description                                |
+| ----------------- | ----------------------------- | ------------------------------------ | ------------------------------------------ |
+| `twoslasher`      | `TwoslashShikiFunctionPython` | _required_                           | The twoslasher instance                    |
+| `explicitTrigger` | `boolean \| RegExp`           | `false`                              | Only process blocks with `twoslash` marker |
+| `renderer`        | `TwoslashRenderer`            | `rendererRichPython()`               | Renderer for output                        |
+| `langs`           | `string[]`                    | `['python']`                         | Languages to process                       |
+| `langAlias`       | `Record<string, string>`      | `{ python: 'python', py: 'python' }` | Language aliases                           |
+| `throws`          | `boolean`                     | `true`                               | Throw on errors                            |
 
 ### `rendererRichPython(options?)`
 
 Configures how enhanced code blocks are rendered.
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `renderMarkdown` | `function` | pass-through | Markdown renderer for docs |
-| `renderMarkdownInline` | `function` | pass-through | Inline markdown renderer |
-| `processHoverInfo` | `function` | cleanup processor | Custom type info formatter |
-| `errorRendering` | `'line' \| 'hover'` | `'line'` | How errors are displayed |
-| `classExtra` | `string` | `'twoslash-python'` | Extra CSS class on elements |
+| Option                 | Type                | Default             | Description                 |
+| ---------------------- | ------------------- | ------------------- | --------------------------- |
+| `renderMarkdown`       | `function`          | pass-through        | Markdown renderer for docs  |
+| `renderMarkdownInline` | `function`          | pass-through        | Inline markdown renderer    |
+| `processHoverInfo`     | `function`          | cleanup processor   | Custom type info formatter  |
+| `errorRendering`       | `'line' \| 'hover'` | `'line'`            | How errors are displayed    |
+| `classExtra`           | `string`            | `'twoslash-python'` | Extra CSS class on elements |
 
 ## CSS
 
@@ -188,7 +188,7 @@ bun run format
 
 - Built on [Shiki](https://shiki.style/)
 - Inspired by [Twoslash](https://twoslash.netlify.app/) for TypeScript
-- Uses [multilspy](https://github.com/microsoft/monitors4codegen) for Python LSP integration
+- Uses [multilspy](https://github.com/microsoft/multilspy) for Python LSP integration
 
 ## License
 
