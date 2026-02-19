@@ -1,0 +1,1172 @@
+[
+  {
+    "type": "hover",
+    "text": "```python\ndef runtime_checkable(cls: _TC) -> _TC\n```",
+    "docs": "Mark a protocol class as a runtime protocol.\n\nSuch protocol can be used with isinstance() and issubclass().\nRaise TypeError if applied to a non-protocol class.\nThis allows a simple-minded structural check very similar to\none trick ponies in collections.abc such as Iterable.\n\nFor example\n\n@runtime_checkable\nclass Closable(Protocol):\n    def close(self): ...\n\nassert isinstance(open('/some/file'), Closable)\n\nWarning: this will check only the presence of the required methods,\nnot their type signatures!\n**Full name:** `typing.runtime_checkable`",
+    "line": 8,
+    "character": 1,
+    "length": 17,
+    "start": 142
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw(self, canvas: \"Canvas\") -> None\n```",
+    "docs": "**Full name:** `example.Drawable.draw`",
+    "line": 12,
+    "character": 8,
+    "length": 4,
+    "start": 247
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 12,
+    "character": 13,
+    "length": 4,
+    "start": 252
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam canvas: \"Canvas\"\n```",
+    "docs": "",
+    "line": 12,
+    "character": 19,
+    "length": 6,
+    "start": 258
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef bounding_box(self) -> \"BoundingBox\"\n```",
+    "docs": "**Full name:** `example.Drawable.bounding_box`",
+    "line": 14,
+    "character": 8,
+    "length": 12,
+    "start": 298
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 14,
+    "character": 21,
+    "length": 4,
+    "start": 311
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef dataclass(_cls: Type[_T]) -> Type[_T]\ndef dataclass(_cls: None) -> Callable[[Type[_T]], Type[_T]]\ndef dataclass(*, init: bool=..., repr: bool=..., eq: bool=..., order: bool=..., unsafe_hash: bool=..., frozen: bool=...) -> Callable[[Type[_T]], Type[_T]]\n```",
+    "docs": "Add dunder methods based on the fields defined in the class.\n\nExamines PEP 526 __annotations__ to determine fields.\n\nIf init is true, an __init__() method is added to the class. If repr\nis true, a __repr__() method is added. If order is true, rich\ncomparison dunder methods are added. If unsafe_hash is true, a\n__hash__() method is added. If frozen is true, fields may not be\nassigned to after instance creation. If match_args is true, the\n__match_args__ tuple is added. If kw_only is true, then by default\nall fields are keyword-only. If slots is true, a new class with a\n__slots__ attribute is returned.",
+    "line": 20,
+    "character": 1,
+    "length": 9,
+    "start": 375
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef dataclass(_cls: Type[_T]) -> Type[_T]\ndef dataclass(_cls: None) -> Callable[[Type[_T]], Type[_T]]\ndef dataclass(*, init: bool=..., repr: bool=..., eq: bool=..., order: bool=..., unsafe_hash: bool=..., frozen: bool=...) -> Callable[[Type[_T]], Type[_T]]\n```",
+    "docs": "Add dunder methods based on the fields defined in the class.\n\nExamines PEP 526 __annotations__ to determine fields.\n\nIf init is true, an __init__() method is added to the class. If repr\nis true, a __repr__() method is added. If order is true, rich\ncomparison dunder methods are added. If unsafe_hash is true, a\n__hash__() method is added. If frozen is true, fields may not be\nassigned to after instance creation. If match_args is true, the\n__match_args__ tuple is added. If kw_only is true, then by default\nall fields are keyword-only. If slots is true, a new class with a\n__slots__ attribute is returned.",
+    "line": 20,
+    "character": 1,
+    "length": 9,
+    "start": 375
+  },
+  {
+    "type": "hover",
+    "text": "```python\nx: float\n```",
+    "docs": "**Full name:** `example.Point.x`",
+    "line": 24,
+    "character": 4,
+    "length": 1,
+    "start": 459
+  },
+  {
+    "type": "hover",
+    "text": "```python\ny: float\n```",
+    "docs": "**Full name:** `example.Point.y`",
+    "line": 25,
+    "character": 4,
+    "length": 1,
+    "start": 472
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef distance_to(self, other: \"Point\") -> float\n```",
+    "docs": "**Full name:** `example.Point.distance_to`",
+    "line": 27,
+    "character": 8,
+    "length": 11,
+    "start": 490
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 27,
+    "character": 20,
+    "length": 4,
+    "start": 502
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam other: \"Point\"\n```",
+    "docs": "",
+    "line": 27,
+    "character": 26,
+    "length": 5,
+    "start": 508
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef sqrt(x: SupportsFloat, /) -> float\n```",
+    "docs": "Return the square root of x.\n**Full name:** `math.sqrt`",
+    "line": 28,
+    "character": 20,
+    "length": 4,
+    "start": 554
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef translate(self, dx: float, dy: float) -> \"Point\"\n```",
+    "docs": "**Full name:** `example.Point.translate`",
+    "line": 30,
+    "character": 8,
+    "length": 9,
+    "start": 619
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 30,
+    "character": 18,
+    "length": 4,
+    "start": 629
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam dx: float\n```",
+    "docs": "",
+    "line": 30,
+    "character": 24,
+    "length": 2,
+    "start": 635
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam dy: float\n```",
+    "docs": "",
+    "line": 30,
+    "character": 35,
+    "length": 2,
+    "start": 646
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Point(x: float, y: float)\n```",
+    "docs": "A 2D point with x/y coordinates.",
+    "line": 31,
+    "character": 15,
+    "length": 5,
+    "start": 684
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef __add__(self, other: \"Point\") -> \"Point\"\n```",
+    "docs": "**Full name:** `example.Point.__add__`",
+    "line": 33,
+    "character": 8,
+    "length": 7,
+    "start": 725
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 33,
+    "character": 16,
+    "length": 4,
+    "start": 733
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam other: \"Point\"\n```",
+    "docs": "",
+    "line": 33,
+    "character": 22,
+    "length": 5,
+    "start": 739
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Point(x: float, y: float)\n```",
+    "docs": "A 2D point with x/y coordinates.",
+    "line": 34,
+    "character": 15,
+    "length": 5,
+    "start": 782
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef dataclass(_cls: Type[_T]) -> Type[_T]\ndef dataclass(_cls: None) -> Callable[[Type[_T]], Type[_T]]\ndef dataclass(*, init: bool=..., repr: bool=..., eq: bool=..., order: bool=..., unsafe_hash: bool=..., frozen: bool=...) -> Callable[[Type[_T]], Type[_T]]\n```",
+    "docs": "Add dunder methods based on the fields defined in the class.\n\nExamines PEP 526 __annotations__ to determine fields.\n\nIf init is true, an __init__() method is added to the class. If repr\nis true, a __repr__() method is added. If order is true, rich\ncomparison dunder methods are added. If unsafe_hash is true, a\n__hash__() method is added. If frozen is true, fields may not be\nassigned to after instance creation. If match_args is true, the\n__match_args__ tuple is added. If kw_only is true, then by default\nall fields are keyword-only. If slots is true, a new class with a\n__slots__ attribute is returned.",
+    "line": 37,
+    "character": 1,
+    "length": 9,
+    "start": 827
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef dataclass(_cls: Type[_T]) -> Type[_T]\ndef dataclass(_cls: None) -> Callable[[Type[_T]], Type[_T]]\ndef dataclass(*, init: bool=..., repr: bool=..., eq: bool=..., order: bool=..., unsafe_hash: bool=..., frozen: bool=...) -> Callable[[Type[_T]], Type[_T]]\n```",
+    "docs": "Add dunder methods based on the fields defined in the class.\n\nExamines PEP 526 __annotations__ to determine fields.\n\nIf init is true, an __init__() method is added to the class. If repr\nis true, a __repr__() method is added. If order is true, rich\ncomparison dunder methods are added. If unsafe_hash is true, a\n__hash__() method is added. If frozen is true, fields may not be\nassigned to after instance creation. If match_args is true, the\n__match_args__ tuple is added. If kw_only is true, then by default\nall fields are keyword-only. If slots is true, a new class with a\n__slots__ attribute is returned.",
+    "line": 37,
+    "character": 1,
+    "length": 9,
+    "start": 827
+  },
+  {
+    "type": "hover",
+    "text": "```python\nmin_point: Point\n```",
+    "docs": "**Full name:** `example.BoundingBox.min_point`",
+    "line": 41,
+    "character": 4,
+    "length": 9,
+    "start": 911
+  },
+  {
+    "type": "hover",
+    "text": "```python\nmax_point: Point\n```",
+    "docs": "**Full name:** `example.BoundingBox.max_point`",
+    "line": 42,
+    "character": 4,
+    "length": 9,
+    "start": 932
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass property(fget: Optional[Callable[[Any], Any]]=..., fset: Optional[Callable[[Any, Any], None]]=..., fdel: Optional[Callable[[Any], None]]=..., doc: Optional[str]=...)\n```",
+    "docs": "Property attribute.\n\n  fget\n    function to be used for getting an attribute value\n  fset\n    function to be used for setting an attribute value\n  fdel\n    function to be used for del'ing an attribute\n  doc\n    docstring\n\nTypical use is to define a managed attribute x:\n\nclass C(object):\n    def getx(self): return self._x\n    def setx(self, value): self._x = value\n    def delx(self): del self._x\n    x = property(getx, setx, delx, \"I'm the 'x' property.\")\n\nDecorators make defining new properties or modifying existing ones easy:\n\nclass C(object):\n    @property\n    def x(self):\n        \"I am the 'x' property.\"\n        return self._x\n    @x.setter\n    def x(self, value):\n        self._x = value\n    @x.deleter\n    def x(self):\n        del self._x",
+    "line": 44,
+    "character": 5,
+    "length": 8,
+    "start": 955
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass property(fget: Optional[Callable[[Any], Any]]=..., fset: Optional[Callable[[Any, Any], None]]=..., fdel: Optional[Callable[[Any], None]]=..., doc: Optional[str]=...)\n```",
+    "docs": "Property attribute.\n\n  fget\n    function to be used for getting an attribute value\n  fset\n    function to be used for setting an attribute value\n  fdel\n    function to be used for del'ing an attribute\n  doc\n    docstring\n\nTypical use is to define a managed attribute x:\n\nclass C(object):\n    def getx(self): return self._x\n    def setx(self, value): self._x = value\n    def delx(self): del self._x\n    x = property(getx, setx, delx, \"I'm the 'x' property.\")\n\nDecorators make defining new properties or modifying existing ones easy:\n\nclass C(object):\n    @property\n    def x(self):\n        \"I am the 'x' property.\"\n        return self._x\n    @x.setter\n    def x(self, value):\n        self._x = value\n    @x.deleter\n    def x(self):\n        del self._x",
+    "line": 48,
+    "character": 5,
+    "length": 8,
+    "start": 1051
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass property(fget: Optional[Callable[[Any], Any]]=..., fset: Optional[Callable[[Any, Any], None]]=..., fdel: Optional[Callable[[Any], None]]=..., doc: Optional[str]=...)\n```",
+    "docs": "Property attribute.\n\n  fget\n    function to be used for getting an attribute value\n  fset\n    function to be used for setting an attribute value\n  fdel\n    function to be used for del'ing an attribute\n  doc\n    docstring\n\nTypical use is to define a managed attribute x:\n\nclass C(object):\n    def getx(self): return self._x\n    def setx(self, value): self._x = value\n    def delx(self): del self._x\n    x = property(getx, setx, delx, \"I'm the 'x' property.\")\n\nDecorators make defining new properties or modifying existing ones easy:\n\nclass C(object):\n    @property\n    def x(self):\n        \"I am the 'x' property.\"\n        return self._x\n    @x.setter\n    def x(self, value):\n        self._x = value\n    @x.deleter\n    def x(self):\n        del self._x",
+    "line": 52,
+    "character": 5,
+    "length": 8,
+    "start": 1148
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef contains(self, point: Point) -> bool\n```",
+    "docs": "**Full name:** `example.BoundingBox.contains`",
+    "line": 56,
+    "character": 8,
+    "length": 8,
+    "start": 1235
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 56,
+    "character": 17,
+    "length": 4,
+    "start": 1244
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam point: Point\n```",
+    "docs": "",
+    "line": 56,
+    "character": 23,
+    "length": 5,
+    "start": 1250
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef intersects(self, other: \"BoundingBox\") -> bool\n```",
+    "docs": "**Full name:** `example.BoundingBox.intersects`",
+    "line": 62,
+    "character": 8,
+    "length": 10,
+    "start": 1433
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 62,
+    "character": 19,
+    "length": 4,
+    "start": 1444
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam other: \"BoundingBox\"\n```",
+    "docs": "",
+    "line": 62,
+    "character": 25,
+    "length": 5,
+    "start": 1450
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef dataclass(_cls: Type[_T]) -> Type[_T]\ndef dataclass(_cls: None) -> Callable[[Type[_T]], Type[_T]]\ndef dataclass(*, init: bool=..., repr: bool=..., eq: bool=..., order: bool=..., unsafe_hash: bool=..., frozen: bool=...) -> Callable[[Type[_T]], Type[_T]]\n```",
+    "docs": "Add dunder methods based on the fields defined in the class.\n\nExamines PEP 526 __annotations__ to determine fields.\n\nIf init is true, an __init__() method is added to the class. If repr\nis true, a __repr__() method is added. If order is true, rich\ncomparison dunder methods are added. If unsafe_hash is true, a\n__hash__() method is added. If frozen is true, fields may not be\nassigned to after instance creation. If match_args is true, the\n__match_args__ tuple is added. If kw_only is true, then by default\nall fields are keyword-only. If slots is true, a new class with a\n__slots__ attribute is returned.",
+    "line": 74,
+    "character": 1,
+    "length": 9,
+    "start": 1739
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncenter: Point\n```",
+    "docs": "**Full name:** `example.Circle.center`",
+    "line": 76,
+    "character": 4,
+    "length": 6,
+    "start": 1767
+  },
+  {
+    "type": "hover",
+    "text": "```python\nradius: float\n```",
+    "docs": "**Full name:** `example.Circle.radius`",
+    "line": 77,
+    "character": 4,
+    "length": 6,
+    "start": 1785
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncolor: str = \"black\"\n```",
+    "docs": "**Full name:** `example.Circle.color`",
+    "line": 78,
+    "character": 4,
+    "length": 5,
+    "start": 1803
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw(self, canvas: \"Canvas\") -> None\n```",
+    "docs": "**Full name:** `example.Circle.draw`",
+    "line": 80,
+    "character": 8,
+    "length": 4,
+    "start": 1833
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 80,
+    "character": 13,
+    "length": 4,
+    "start": 1838
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam canvas: \"Canvas\"\n```",
+    "docs": "",
+    "line": 80,
+    "character": 19,
+    "length": 6,
+    "start": 1844
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw_circle(center: Point, radius: float, color: str) -> None\n```",
+    "docs": "**Full name:** `example.Canvas.draw_circle`",
+    "line": 81,
+    "character": 15,
+    "length": 11,
+    "start": 1886
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef bounding_box(self) -> BoundingBox\n```",
+    "docs": "**Full name:** `example.Circle.bounding_box`",
+    "line": 83,
+    "character": 8,
+    "length": 12,
+    "start": 1945
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 83,
+    "character": 21,
+    "length": 4,
+    "start": 1958
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass BoundingBox(min_point: Point, max_point: Point)\n```",
+    "docs": "Axis-aligned bounding box.\n**Full name:** `example.BoundingBox`",
+    "line": 84,
+    "character": 15,
+    "length": 11,
+    "start": 1995
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef translate(dx: float, dy: float) -> \"Point\"\n```",
+    "docs": "**Full name:** `example.Point.translate`",
+    "line": 85,
+    "character": 34,
+    "length": 9,
+    "start": 2042
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef translate(dx: float, dy: float) -> \"Point\"\n```",
+    "docs": "**Full name:** `example.Point.translate`",
+    "line": 86,
+    "character": 34,
+    "length": 9,
+    "start": 2115
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass property(fget: Optional[Callable[[Any], Any]]=..., fset: Optional[Callable[[Any, Any], None]]=..., fdel: Optional[Callable[[Any], None]]=..., doc: Optional[str]=...)\n```",
+    "docs": "Property attribute.\n\n  fget\n    function to be used for getting an attribute value\n  fset\n    function to be used for setting an attribute value\n  fdel\n    function to be used for del'ing an attribute\n  doc\n    docstring\n\nTypical use is to define a managed attribute x:\n\nclass C(object):\n    def getx(self): return self._x\n    def setx(self, value): self._x = value\n    def delx(self): del self._x\n    x = property(getx, setx, delx, \"I'm the 'x' property.\")\n\nDecorators make defining new properties or modifying existing ones easy:\n\nclass C(object):\n    @property\n    def x(self):\n        \"I am the 'x' property.\"\n        return self._x\n    @x.setter\n    def x(self, value):\n        self._x = value\n    @x.deleter\n    def x(self):\n        del self._x",
+    "line": 89,
+    "character": 5,
+    "length": 8,
+    "start": 2168
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass property(fget: Optional[Callable[[Any], Any]]=..., fset: Optional[Callable[[Any, Any], None]]=..., fdel: Optional[Callable[[Any], None]]=..., doc: Optional[str]=...)\n```",
+    "docs": "Property attribute.\n\n  fget\n    function to be used for getting an attribute value\n  fset\n    function to be used for setting an attribute value\n  fdel\n    function to be used for del'ing an attribute\n  doc\n    docstring\n\nTypical use is to define a managed attribute x:\n\nclass C(object):\n    def getx(self): return self._x\n    def setx(self, value): self._x = value\n    def delx(self): del self._x\n    x = property(getx, setx, delx, \"I'm the 'x' property.\")\n\nDecorators make defining new properties or modifying existing ones easy:\n\nclass C(object):\n    @property\n    def x(self):\n        \"I am the 'x' property.\"\n        return self._x\n    @x.setter\n    def x(self, value):\n        self._x = value\n    @x.deleter\n    def x(self):\n        del self._x",
+    "line": 93,
+    "character": 5,
+    "length": 8,
+    "start": 2262
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef dataclass(_cls: Type[_T]) -> Type[_T]\ndef dataclass(_cls: None) -> Callable[[Type[_T]], Type[_T]]\ndef dataclass(*, init: bool=..., repr: bool=..., eq: bool=..., order: bool=..., unsafe_hash: bool=..., frozen: bool=...) -> Callable[[Type[_T]], Type[_T]]\n```",
+    "docs": "Add dunder methods based on the fields defined in the class.\n\nExamines PEP 526 __annotations__ to determine fields.\n\nIf init is true, an __init__() method is added to the class. If repr\nis true, a __repr__() method is added. If order is true, rich\ncomparison dunder methods are added. If unsafe_hash is true, a\n__hash__() method is added. If frozen is true, fields may not be\nassigned to after instance creation. If match_args is true, the\n__match_args__ tuple is added. If kw_only is true, then by default\nall fields are keyword-only. If slots is true, a new class with a\n__slots__ attribute is returned.",
+    "line": 98,
+    "character": 1,
+    "length": 9,
+    "start": 2343
+  },
+  {
+    "type": "hover",
+    "text": "```python\norigin: Point\n```",
+    "docs": "**Full name:** `example.Rectangle.origin`",
+    "line": 100,
+    "character": 4,
+    "length": 6,
+    "start": 2374
+  },
+  {
+    "type": "hover",
+    "text": "```python\nwidth: float\n```",
+    "docs": "**Full name:** `example.Rectangle.width`",
+    "line": 101,
+    "character": 4,
+    "length": 5,
+    "start": 2392
+  },
+  {
+    "type": "hover",
+    "text": "```python\nheight: float\n```",
+    "docs": "**Full name:** `example.Rectangle.height`",
+    "line": 102,
+    "character": 4,
+    "length": 6,
+    "start": 2409
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncolor: str = \"black\"\n```",
+    "docs": "**Full name:** `example.Rectangle.color`",
+    "line": 103,
+    "character": 4,
+    "length": 5,
+    "start": 2427
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw(self, canvas: \"Canvas\") -> None\n```",
+    "docs": "**Full name:** `example.Rectangle.draw`",
+    "line": 105,
+    "character": 8,
+    "length": 4,
+    "start": 2457
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 105,
+    "character": 13,
+    "length": 4,
+    "start": 2462
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam canvas: \"Canvas\"\n```",
+    "docs": "",
+    "line": 105,
+    "character": 19,
+    "length": 6,
+    "start": 2468
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw_rect(origin: Point, w: float, h: float, color: str) -> None\n```",
+    "docs": "**Full name:** `example.Canvas.draw_rect`",
+    "line": 106,
+    "character": 15,
+    "length": 9,
+    "start": 2510
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef bounding_box(self) -> BoundingBox\n```",
+    "docs": "**Full name:** `example.Rectangle.bounding_box`",
+    "line": 108,
+    "character": 8,
+    "length": 12,
+    "start": 2579
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 108,
+    "character": 21,
+    "length": 4,
+    "start": 2592
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass BoundingBox(min_point: Point, max_point: Point)\n```",
+    "docs": "Axis-aligned bounding box.\n**Full name:** `example.BoundingBox`",
+    "line": 109,
+    "character": 15,
+    "length": 11,
+    "start": 2629
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef translate(dx: float, dy: float) -> \"Point\"\n```",
+    "docs": "**Full name:** `example.Point.translate`",
+    "line": 111,
+    "character": 34,
+    "length": 9,
+    "start": 2711
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass property(fget: Optional[Callable[[Any], Any]]=..., fset: Optional[Callable[[Any, Any], None]]=..., fdel: Optional[Callable[[Any], None]]=..., doc: Optional[str]=...)\n```",
+    "docs": "Property attribute.\n\n  fget\n    function to be used for getting an attribute value\n  fset\n    function to be used for setting an attribute value\n  fdel\n    function to be used for del'ing an attribute\n  doc\n    docstring\n\nTypical use is to define a managed attribute x:\n\nclass C(object):\n    def getx(self): return self._x\n    def setx(self, value): self._x = value\n    def delx(self): del self._x\n    x = property(getx, setx, delx, \"I'm the 'x' property.\")\n\nDecorators make defining new properties or modifying existing ones easy:\n\nclass C(object):\n    @property\n    def x(self):\n        \"I am the 'x' property.\"\n        return self._x\n    @x.setter\n    def x(self, value):\n        self._x = value\n    @x.deleter\n    def x(self):\n        del self._x",
+    "line": 114,
+    "character": 5,
+    "length": 8,
+    "start": 2763
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass classmethod(f: Callable[..., Any])\n```",
+    "docs": "```\nclassmethod(function) -> method\n      @classmethod\n      def f(cls, arg1, arg2, argN):\n          ...\n\nConvert a function to be a class method.\n\nA class method receives the class as implicit first argument,\njust like an instance method receives the instance.\nTo declare a class method, use this idiom:\n\n  class C:\n\nIt can be called either on the class (e.g. C.f()) or on an instance\n(e.g. C().f()).  The instance is ignored except for its class.\nIf a class method is called for a derived class, the derived class\nobject is passed as the implied first argument.\n\nClass methods are different than C++ or Java static methods.\nIf you want those, see the staticmethod builtin.\n**Full name:** `builtins.classmethod`",
+    "line": 118,
+    "character": 5,
+    "length": 11,
+    "start": 2847
+  },
+  {
+    "type": "hover",
+    "text": "```python\norigin = Point(min(p1.x, p2.x), min(p1.y, p2.y))\n```",
+    "docs": "**Full name:** `example.Rectangle.from_points.origin`",
+    "line": 120,
+    "character": 8,
+    "length": 6,
+    "start": 2952
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Point(x: float, y: float)\n```",
+    "docs": "A 2D point with x/y coordinates.",
+    "line": 120,
+    "character": 17,
+    "length": 5,
+    "start": 2961
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef min(arg1: SupportsLessThanT, arg2: SupportsLessThanT, /, *_args: SupportsLessThanT, key: None=...) -> SupportsLessThanT\ndef min(arg1: _T, arg2: _T, /, *_args: _T, key: Callable[[_T], SupportsLessThanT]) -> _T\ndef min(iterable: Iterable[SupportsLessThanT], /, *, key: None=...) -> SupportsLessThanT\ndef min(iterable: Iterable[_T], /, *, key: Callable[[_T], SupportsLessThanT]) -> _T\ndef min(iterable: Iterable[SupportsLessThanT], /, *, key: None=..., default: _T) -> Union[SupportsLessThanT, _T]\ndef min(iterable: Iterable[_T1], /, *, key: Callable[[_T1], SupportsLessThanT], default: _T2) -> Union[_T1, _T2]\n```",
+    "docs": "```\nmin(iterable, *[, default=obj, key=func]) -> value\nmin(arg1, arg2, *args, *[, key=func]) -> value\n\nWith a single iterable argument, return its smallest item. The\ndefault keyword-only argument specifies an object to return if\nthe provided iterable is empty.\nWith two or more arguments, return the smallest argument.\n**Full name:** `builtins.min`",
+    "line": 120,
+    "character": 23,
+    "length": 3,
+    "start": 2967
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef min(arg1: SupportsLessThanT, arg2: SupportsLessThanT, /, *_args: SupportsLessThanT, key: None=...) -> SupportsLessThanT\ndef min(arg1: _T, arg2: _T, /, *_args: _T, key: Callable[[_T], SupportsLessThanT]) -> _T\ndef min(iterable: Iterable[SupportsLessThanT], /, *, key: None=...) -> SupportsLessThanT\ndef min(iterable: Iterable[_T], /, *, key: Callable[[_T], SupportsLessThanT]) -> _T\ndef min(iterable: Iterable[SupportsLessThanT], /, *, key: None=..., default: _T) -> Union[SupportsLessThanT, _T]\ndef min(iterable: Iterable[_T1], /, *, key: Callable[[_T1], SupportsLessThanT], default: _T2) -> Union[_T1, _T2]\n```",
+    "docs": "```\nmin(iterable, *[, default=obj, key=func]) -> value\nmin(arg1, arg2, *args, *[, key=func]) -> value\n\nWith a single iterable argument, return its smallest item. The\ndefault keyword-only argument specifies an object to return if\nthe provided iterable is empty.\nWith two or more arguments, return the smallest argument.\n**Full name:** `builtins.min`",
+    "line": 120,
+    "character": 40,
+    "length": 3,
+    "start": 2984
+  },
+  {
+    "type": "hover",
+    "text": "```python\nw = abs(p2.x - p1.x)\n```",
+    "docs": "**Full name:** `example.Rectangle.from_points.w`",
+    "line": 121,
+    "character": 8,
+    "length": 1,
+    "start": 3009
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef abs(x: SupportsAbs[_T], /) -> _T\n```",
+    "docs": "Return the absolute value of the argument.\n**Full name:** `builtins.abs`",
+    "line": 121,
+    "character": 12,
+    "length": 3,
+    "start": 3013
+  },
+  {
+    "type": "hover",
+    "text": "```python\nh = abs(p2.y - p1.y)\n```",
+    "docs": "**Full name:** `example.Rectangle.from_points.h`",
+    "line": 122,
+    "character": 8,
+    "length": 1,
+    "start": 3038
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef abs(x: SupportsAbs[_T], /) -> _T\n```",
+    "docs": "Return the absolute value of the argument.\n**Full name:** `builtins.abs`",
+    "line": 122,
+    "character": 12,
+    "length": 3,
+    "start": 3042
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam Rectangle()\n```",
+    "docs": "param cls",
+    "line": 123,
+    "character": 15,
+    "length": 3,
+    "start": 3074
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef dataclass(_cls: Type[_T]) -> Type[_T]\ndef dataclass(_cls: None) -> Callable[[Type[_T]], Type[_T]]\ndef dataclass(*, init: bool=..., repr: bool=..., eq: bool=..., order: bool=..., unsafe_hash: bool=..., frozen: bool=...) -> Callable[[Type[_T]], Type[_T]]\n```",
+    "docs": "Add dunder methods based on the fields defined in the class.\n\nExamines PEP 526 __annotations__ to determine fields.\n\nIf init is true, an __init__() method is added to the class. If repr\nis true, a __repr__() method is added. If order is true, rich\ncomparison dunder methods are added. If unsafe_hash is true, a\n__hash__() method is added. If frozen is true, fields may not be\nassigned to after instance creation. If match_args is true, the\n__match_args__ tuple is added. If kw_only is true, then by default\nall fields are keyword-only. If slots is true, a new class with a\n__slots__ attribute is returned.",
+    "line": 129,
+    "character": 1,
+    "length": 9,
+    "start": 3155
+  },
+  {
+    "type": "hover",
+    "text": "```python\nwidth: int\n```",
+    "docs": "**Full name:** `example.Canvas.width`",
+    "line": 133,
+    "character": 4,
+    "length": 5,
+    "start": 3239
+  },
+  {
+    "type": "hover",
+    "text": "```python\nheight: int\n```",
+    "docs": "**Full name:** `example.Canvas.height`",
+    "line": 134,
+    "character": 4,
+    "length": 6,
+    "start": 3254
+  },
+  {
+    "type": "hover",
+    "text": "```python\noperations: list[str] = field(default_factory=list)\n```",
+    "docs": "**Full name:** `example.Canvas.operations`",
+    "line": 135,
+    "character": 4,
+    "length": 10,
+    "start": 3270
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef field(*, default: _T, init: bool=..., repr: bool=..., hash: Optional[bool]=..., compare: bool=..., metadata: Optional[Mapping[str, Any]]=...) -> _T\ndef field(*, default_factory: Callable[[], _T], init: bool=..., repr: bool=..., hash: Optional[bool]=..., compare: bool=..., metadata: Optional[Mapping[str, Any]]=...) -> _T\ndef field(*, init: bool=..., repr: bool=..., hash: Optional[bool]=..., compare: bool=..., metadata: Optional[Mapping[str, Any]]=...) -> Any\n```",
+    "docs": "Return an object to identify dataclass fields.\n\ndefault is the default value of the field.  default_factory is a\n0-argument function called to initialize a field's value.  If init\nis true, the field will be a parameter to the class's __init__()\nfunction.  If repr is true, the field will be included in the\nobject's repr().  If hash is true, the field will be included in the\nobject's hash().  If compare is true, the field will be used in\ncomparison functions.  metadata, if specified, must be a mapping\nwhich is stored but not otherwise examined by dataclass.  If kw_only\nis true, the field will become a keyword-only parameter to\n__init__().\n\nIt is an error to specify both default and default_factory.",
+    "line": 135,
+    "character": 28,
+    "length": 5,
+    "start": 3294
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw_circle(self, center: Point, radius: float, color: str) -> None\n```",
+    "docs": "**Full name:** `example.Canvas.draw_circle`",
+    "line": 137,
+    "character": 8,
+    "length": 11,
+    "start": 3331
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 137,
+    "character": 20,
+    "length": 4,
+    "start": 3343
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam center: Point\n```",
+    "docs": "",
+    "line": 137,
+    "character": 26,
+    "length": 6,
+    "start": 3349
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam radius: float\n```",
+    "docs": "",
+    "line": 137,
+    "character": 41,
+    "length": 6,
+    "start": 3364
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam color: str\n```",
+    "docs": "",
+    "line": 137,
+    "character": 56,
+    "length": 5,
+    "start": 3379
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef append(object: _T, /) -> None\n```",
+    "docs": "Append object to the end of the list.\n**Full name:** `builtins.list.append`",
+    "line": 138,
+    "character": 24,
+    "length": 6,
+    "start": 3424
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw_rect(self, origin: Point, w: float, h: float, color: str) -> None\n```",
+    "docs": "**Full name:** `example.Canvas.draw_rect`",
+    "line": 142,
+    "character": 8,
+    "length": 9,
+    "start": 3518
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw_rect(self, origin: Point, w: float, h: float, color: str) -> None\n```",
+    "docs": "**Full name:** `example.Canvas.draw_rect`",
+    "line": 142,
+    "character": 11,
+    "length": 1,
+    "start": 3521
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 142,
+    "character": 18,
+    "length": 4,
+    "start": 3528
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam origin: Point\n```",
+    "docs": "",
+    "line": 142,
+    "character": 24,
+    "length": 6,
+    "start": 3534
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam h: float\n```",
+    "docs": "",
+    "line": 142,
+    "character": 49,
+    "length": 1,
+    "start": 3559
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam color: str\n```",
+    "docs": "",
+    "line": 142,
+    "character": 59,
+    "length": 5,
+    "start": 3569
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef append(object: _T, /) -> None\n```",
+    "docs": "Append object to the end of the list.\n**Full name:** `builtins.list.append`",
+    "line": 143,
+    "character": 24,
+    "length": 6,
+    "start": 3614
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef clear(self) -> None\n```",
+    "docs": "**Full name:** `example.Canvas.clear`",
+    "line": 147,
+    "character": 8,
+    "length": 5,
+    "start": 3703
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam self\n```",
+    "docs": "",
+    "line": 147,
+    "character": 14,
+    "length": 4,
+    "start": 3709
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef clear() -> None\n```",
+    "docs": "Remove all items from list.\n**Full name:** `builtins.list.clear`",
+    "line": 148,
+    "character": 24,
+    "length": 5,
+    "start": 3748
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef render_scene(canvas: Canvas, shapes: list[Drawable]) -> int\n```",
+    "docs": "Render all shapes onto the canvas and return the count.\n**Full name:** `example.render_scene`",
+    "line": 151,
+    "character": 4,
+    "length": 12,
+    "start": 3762
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam canvas: Canvas\n```",
+    "docs": "",
+    "line": 151,
+    "character": 17,
+    "length": 6,
+    "start": 3775
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam shapes: list[Drawable]\n```",
+    "docs": "",
+    "line": 151,
+    "character": 33,
+    "length": 6,
+    "start": 3791
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef clear() -> None\n```",
+    "docs": "**Full name:** `example.Canvas.clear`",
+    "line": 153,
+    "character": 11,
+    "length": 5,
+    "start": 3900
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef draw(canvas: \"Canvas\") -> None\n```",
+    "docs": "**Full name:** `example.Drawable.draw`",
+    "line": 155,
+    "character": 14,
+    "length": 4,
+    "start": 3947
+  },
+  {
+    "type": "hover",
+    "text": "```python\nparam canvas: Canvas\n```",
+    "docs": "",
+    "line": 155,
+    "character": 19,
+    "length": 6,
+    "start": 3952
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef len(obj: Sized, /) -> int\n```",
+    "docs": "Return the number of items in a container.\n**Full name:** `builtins.len`",
+    "line": 156,
+    "character": 11,
+    "length": 3,
+    "start": 3971
+  },
+  {
+    "type": "hover",
+    "text": "```python\norigin = Point(0.0, 0.0)\n```",
+    "docs": "**Full name:** `example.origin`",
+    "line": 161,
+    "character": 0,
+    "length": 6,
+    "start": 4012
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Point(x: float, y: float)\n```",
+    "docs": "A 2D point with x/y coordinates.",
+    "line": 161,
+    "character": 9,
+    "length": 5,
+    "start": 4021
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncenter = Point(50.0, 50.0)\n```",
+    "docs": "**Full name:** `example.center`",
+    "line": 162,
+    "character": 0,
+    "length": 6,
+    "start": 4037
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Point(x: float, y: float)\n```",
+    "docs": "A 2D point with x/y coordinates.",
+    "line": 162,
+    "character": 9,
+    "length": 5,
+    "start": 4046
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncircle = Circle(center=center, radius=25.0, color=\"red\")\n```",
+    "docs": "**Full name:** `example.circle`",
+    "line": 164,
+    "character": 0,
+    "length": 6,
+    "start": 4065
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Circle(center: Point, radius: float, color: str=\"black\")\n```",
+    "docs": "**Full name:** `example.Circle`",
+    "line": 164,
+    "character": 9,
+    "length": 6,
+    "start": 4074
+  },
+  {
+    "type": "hover",
+    "text": "```python\nrect = Rectangle.from_points(origin, Point(100.0, 80.0), color=\"blue\")\n```",
+    "docs": "**Full name:** `example.rect`",
+    "line": 165,
+    "character": 0,
+    "length": 4,
+    "start": 4122
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef from_points(p1: Point, p2: Point, color: str=\"black\") -> \"Rectangle\"\n```",
+    "docs": "**Full name:** `example.Rectangle.from_points`",
+    "line": 165,
+    "character": 17,
+    "length": 11,
+    "start": 4139
+  },
+  {
+    "type": "hover",
+    "text": "```python\norigin = Point(0.0, 0.0)\n```",
+    "docs": "**Full name:** `example.origin`",
+    "line": 165,
+    "character": 29,
+    "length": 6,
+    "start": 4151
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Point(x: float, y: float)\n```",
+    "docs": "A 2D point with x/y coordinates.",
+    "line": 165,
+    "character": 37,
+    "length": 5,
+    "start": 4159
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncanvas = Canvas(width=200, height=200)\n```",
+    "docs": "**Full name:** `example.canvas`",
+    "line": 167,
+    "character": 0,
+    "length": 6,
+    "start": 4194
+  },
+  {
+    "type": "hover",
+    "text": "```python\nclass Canvas(width: int, height: int, operations: list[str]=field(default_factory=list))\n```",
+    "docs": "Simple canvas that collects draw operations.\n**Full name:** `example.Canvas`",
+    "line": 167,
+    "character": 9,
+    "length": 6,
+    "start": 4203
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncount = render_scene(canvas, [circle, rect])\n```",
+    "docs": "**Full name:** `example.count`",
+    "line": 168,
+    "character": 0,
+    "length": 5,
+    "start": 4233
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef render_scene(canvas: Canvas, shapes: list[Drawable]) -> int\n```",
+    "docs": "Render all shapes onto the canvas and return the count.\n**Full name:** `example.render_scene`",
+    "line": 168,
+    "character": 8,
+    "length": 12,
+    "start": 4241
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncanvas = Canvas(width=200, height=200)\n```",
+    "docs": "**Full name:** `example.canvas`",
+    "line": 168,
+    "character": 21,
+    "length": 6,
+    "start": 4254
+  },
+  {
+    "type": "hover",
+    "text": "```python\nis_inside = circle.bounding_box().contains(center)\n```",
+    "docs": "**Full name:** `example.is_inside`",
+    "line": 170,
+    "character": 0,
+    "length": 9,
+    "start": 4279
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef bounding_box() -> BoundingBox\n```",
+    "docs": "**Full name:** `example.Circle.bounding_box`",
+    "line": 170,
+    "character": 19,
+    "length": 12,
+    "start": 4298
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef contains(point: Point) -> bool\n```",
+    "docs": "**Full name:** `example.BoundingBox.contains`",
+    "line": 170,
+    "character": 34,
+    "length": 8,
+    "start": 4313
+  },
+  {
+    "type": "hover",
+    "text": "```python\ncenter = Point(50.0, 50.0)\n```",
+    "docs": "**Full name:** `example.center`",
+    "line": 170,
+    "character": 43,
+    "length": 6,
+    "start": 4322
+  },
+  {
+    "type": "hover",
+    "text": "```python\noverlaps = circle.bounding_box().intersects(rect.bounding_box())\n```",
+    "docs": "**Full name:** `example.overlaps`",
+    "line": 171,
+    "character": 0,
+    "length": 8,
+    "start": 4330
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef bounding_box() -> BoundingBox\n```",
+    "docs": "**Full name:** `example.Circle.bounding_box`",
+    "line": 171,
+    "character": 18,
+    "length": 12,
+    "start": 4348
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef intersects(other: \"BoundingBox\") -> bool\n```",
+    "docs": "**Full name:** `example.BoundingBox.intersects`",
+    "line": 171,
+    "character": 33,
+    "length": 10,
+    "start": 4363
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef bounding_box() -> BoundingBox\n```",
+    "docs": "**Full name:** `example.Rectangle.bounding_box`",
+    "line": 171,
+    "character": 49,
+    "length": 12,
+    "start": 4379
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef print(*values: object, sep: Optional[str]=..., end: Optional[str]=..., file: Optional[SupportsWrite[str]]=..., flush: bool=...) -> None\n```",
+    "docs": "Prints the values to a stream, or to sys.stdout by default.\n\nsep\n  string inserted between values, default a space.\nend\n  string appended after the last value, default a newline.\nfile\n  a file-like object (stream); defaults to the current sys.stdout.\nflush\n  whether to forcibly flush the stream.",
+    "line": 173,
+    "character": 0,
+    "length": 5,
+    "start": 4396
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef print(*values: object, sep: Optional[str]=..., end: Optional[str]=..., file: Optional[SupportsWrite[str]]=..., flush: bool=...) -> None\n```",
+    "docs": "Prints the values to a stream, or to sys.stdout by default.\n\nsep\n  string inserted between values, default a space.\nend\n  string appended after the last value, default a newline.\nfile\n  a file-like object (stream); defaults to the current sys.stdout.\nflush\n  whether to forcibly flush the stream.",
+    "line": 174,
+    "character": 0,
+    "length": 5,
+    "start": 4430
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef print(*values: object, sep: Optional[str]=..., end: Optional[str]=..., file: Optional[SupportsWrite[str]]=..., flush: bool=...) -> None\n```",
+    "docs": "Prints the values to a stream, or to sys.stdout by default.\n\nsep\n  string inserted between values, default a space.\nend\n  string appended after the last value, default a newline.\nfile\n  a file-like object (stream); defaults to the current sys.stdout.\nflush\n  whether to forcibly flush the stream.",
+    "line": 175,
+    "character": 0,
+    "length": 5,
+    "start": 4471
+  },
+  {
+    "type": "hover",
+    "text": "```python\ndef print(*values: object, sep: Optional[str]=..., end: Optional[str]=..., file: Optional[SupportsWrite[str]]=..., flush: bool=...) -> None\n```",
+    "docs": "Prints the values to a stream, or to sys.stdout by default.\n\nsep\n  string inserted between values, default a space.\nend\n  string appended after the last value, default a newline.\nfile\n  a file-like object (stream); defaults to the current sys.stdout.\nflush\n  whether to forcibly flush the stream.",
+    "line": 176,
+    "character": 0,
+    "length": 5,
+    "start": 4520
+  }
+]

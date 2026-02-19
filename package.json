@@ -38,7 +38,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "bun run build",
     "lint": "eslint . --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "clean": "rm -rf dist"

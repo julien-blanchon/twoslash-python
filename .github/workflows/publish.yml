@@ -13,16 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: oven-sh/setup-bun@v2
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
 
-      - run: npm ci
+      - run: bun install
 
-      - run: npm run build
+      - run: bun run build
 
-      - run: npm run lint
+      - run: bun run lint
 
       - run: npm publish --provenance --access public
         env:

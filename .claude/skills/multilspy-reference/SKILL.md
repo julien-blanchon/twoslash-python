@@ -11,7 +11,7 @@ allowed-tools: Read, Grep, Glob
 
 Multilspy is a Python library that provides a unified interface to Language Server Protocol (LSP) servers for multiple languages. It handles server lifecycle, file management, and LSP request/response marshalling.
 
-Repo: https://github.com/microsoft/monitors4codegen
+Repo: https://github.com/microsoft/multilspy (and eventually https://github.com/microsoft/monitors4codegen)
 
 ## Configuration
 
@@ -69,6 +69,7 @@ result = await lsp.request_hover(file_path: str, line: int, column: int) -> Hove
 ```
 
 Returns `Hover` with:
+
 ```python
 class Hover(TypedDict):
     contents: MarkupContent  # { kind: str, value: str }
@@ -84,6 +85,7 @@ result = await lsp.request_completions(file_path: str, line: int, column: int) -
 ```
 
 Returns list of `CompletionItem`:
+
 ```python
 class CompletionItem(TypedDict):
     completionText: str

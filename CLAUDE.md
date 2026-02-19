@@ -11,10 +11,10 @@ This project brings Twoslash-style hover information to Python code blocks in Sh
 
 ```bash
 # TypeScript
-npm install
-npm run build        # tsc
-npm run lint         # eslint with --fix
-npm run format       # prettier
+bun install
+bun run build        # tsc
+bun run lint         # eslint with --fix
+bun run format       # prettier
 
 # Python (requires Python 3.12+)
 cd src-python
@@ -75,7 +75,7 @@ All nodes share: `type`, `start`, `length`, `line`, `character`
 
 ## Publishing
 
-- npm publish is automated via GitHub Actions on release (`.github/workflows/publish.yml`)
+- npm publish is automated via GitHub Actions on release (`.github/workflows/publish.yml`) (uses bun for build, npm for publish)
 - NPM_TOKEN secret is configured on the GitHub repo
 - CI runs on push/PR to main (`.github/workflows/ci.yml`)
 

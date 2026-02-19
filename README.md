@@ -42,7 +42,7 @@ Python source file
 ### Node.js package
 
 ```bash
-npm install twoslash-python
+bun add twoslash-python
 ```
 
 ### Python CLI
@@ -172,16 +172,16 @@ See the [`@shikijs/twoslash` style reference](https://shiki.style/packages/twosl
 
 ```bash
 # Install dependencies
-npm install
+bun install
 
 # Build TypeScript
-npm run build
+bun run build
 
 # Lint
-npm run lint
+bun run lint
 
 # Format
-npm run format
+bun run format
 ```
 
 ## Acknowledgments
