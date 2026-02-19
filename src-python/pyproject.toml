@@ -1,9 +1,15 @@
 [project]
-name = "src-python"
+name = "pytwoslash"
 version = "0.1.0"
-description = "Generate hover information for Python code"
+description = "Python LSP-powered hover information generator for Twoslash code blocks"
+readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.12"
+keywords = ["twoslash", "lsp", "hover", "documentation", "shiki"]
 dependencies = [
     "cyclopts>=3.10.1",
     "multilspy>=0.0.14",
 ]
+
+[project.scripts]
+pytwoslash = "main:app"

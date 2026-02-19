@@ -1,15 +1,8 @@
 import type { TwoslashShikiReturn } from '@shikijs/twoslash/core';
 import fs from 'fs';
 import type {
-  CompilerOptionDeclaration,
   CreateTwoslashOptions,
-  HandbookOptions,
-  ParsedFlagNotation,
-  Range,
   TwoslashExecuteOptions,
-  TwoslashInstance,
-  TwoslashReturn,
-  TwoslashReturnMeta,
 } from 'twoslash';
 
 export interface PythonCompilerOptions {}
@@ -48,13 +41,11 @@ type TwoslashShikiFunctionPython = {
   getCacheMap: () => undefined;
 };
 
-function createTwoslasherPython(createOptions: CreateTwoslashPythonOptions = {}) {
-  const {} = createOptions;
-
+function createTwoslasherPython(_createOptions: CreateTwoslashPythonOptions = {}) {
   const twoslasher: TwoslashShikiFunctionPython = (
     code: string,
-    extension?: string,
-    options?: TwoslashExecuteOptions,
+    _extension?: string,
+    _options?: TwoslashExecuteOptions,
     pythonOptions?: PythonOptions
   ): TwoslashShikiReturn => {
     const default_nodes = [
@@ -73,7 +64,6 @@ function createTwoslasherPython(createOptions: CreateTwoslashPythonOptions = {})
     ];
 
     if (!pythonOptions?.json_file_path) {
-      console.log('no json_file_path');
       return {
         code: code,
         nodes: default_nodes,
@@ -81,33 +71,20 @@ function createTwoslasherPython(createOptions: CreateTwoslashPythonOptions = {})
     }
 
     const json_file_path = pythonOptions.json_file_path;
-    console.log('json_file_path', json_file_path);
 
     // Load the json file
     let json_data;
     let nodes;
     try {
       json_data = fs.readFileSync(json_file_path, 'utf8');
-      console.log('Raw JSON data:', json_data);
       nodes = JSON.parse(json_data);
-      console.log('Parsed JSON data:', nodes);
     } catch (error) {
-      console.error('Error loading json file', error);
+      console.error('Error loading JSON file:', error);
       return {
         code: code,
         nodes: default_nodes,
       };
     }
-    console.log('nodes[0].type', nodes[0].type);
-
-    // type Foo = {
-    // bar: string
-    // }
-
-    console.log('nodes', nodes);
-
-    // const code_without_first_line = code.split('\n').slice(1).join('\n');
-
     return {
       code: code,
       nodes: nodes,

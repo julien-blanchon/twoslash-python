@@ -3,31 +3,95 @@
 [![npm version](https://badge.fury.io/js/twoslash-python.svg)](https://www.npmjs.com/package/twoslash-python)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Shiki transformer that brings Python Language Server Protocol (LSP) powered type information and documentation to your code blocks. This package extends Shiki's capabilities to work with Python, enabling rich, interactive code documentation with type information, hover states, and more.
+A [Shiki](https://shiki.style/) transformer that brings **Python LSP-powered type information** to your code blocks -- the same rich hover experience [Twoslash](https://twoslash.netlify.app/) provides for TypeScript, but for Python.
+
+Hover over any symbol in a Python code block and get type signatures, docstrings, and parameter info, all extracted via the Python Language Server.
+
+## How It Works
+
+The project has two parts:
+
+1. **`pytwoslash`** (Python CLI) -- Uses [multilspy](https://github.com/microsoft/monitors4codegen) to spin up a Python language server, walks your code's AST to find symbols, and fetches hover information for each one. Outputs a JSON file of annotated nodes.
+
+2. **`twoslash-python`** (Node.js / Shiki transformer) -- Reads that JSON and injects hover popups, error highlights, and type annotations into Shiki-rendered code blocks.
+
+```
+Python source file
+        |
+        v
+  [ pytwoslash CLI ]  -->  nodes.json  (hover info, errors, etc.)
+        |                       |
+        v                       v
+  Python LSP            [ Shiki transformer ]
+  (multilspy)                   |
+                                v
+                        Rich HTML code block
+                        with hover tooltips
+```
 
 ## Features
 
-- 🐍 Python code blocks with LSP-powered type information
-- 💡 Hover tooltips showing type information and documentation
-- 🔍 Error highlighting and diagnostics
-- 🎨 Seamless integration with Shiki themes
-- 📚 Compatible with modern documentation frameworks
+- Python code blocks with LSP-powered type information
+- Hover tooltips showing type signatures and documentation
+- Error highlighting and diagnostics
+- Seamless integration with Shiki themes
+- Compatible with documentation frameworks (VitePress, Astro, etc.)
 
 ## Installation
 
+### Node.js package
+
 ```bash
 npm install twoslash-python
-# or
-yarn add twoslash-python
-# or
-pnpm add twoslash-python
-# or
-bun add twoslash-python
+```
+
+### Python CLI
+
+Requires **Python 3.12+**.
+
+```bash
+cd src-python
+pip install -e .
+```
+
+Or with [uv](https://docs.astral.sh/uv/):
+
+```bash
+cd src-python
+uv pip install -e .
 ```
 
 ## Usage
 
-The package provides several components that work together to enable Python LSP features in your code blocks:
+### Step 1: Generate hover data with `pytwoslash`
+
+Run the Python CLI on a source file to extract LSP hover information:
+
+```bash
+cd src-python
+python main.py <file.py> <project_path> -o output.json
+```
+
+**Arguments:**
+
+| Argument | Description |
+|---|---|
+| `file_path` | Path to the Python file to process |
+| `project_path` | Path to the Python project root (used for LSP resolution) |
+| `-o, --output` | Output JSON file path (default: `<file>.nodes.json`) |
+| `-v, --verbose` | Enable verbose logging |
+| `--symbol-kinds` | Filter symbol types (e.g., `class`, `function`, `variable`) |
+| `--include-all-symbols` | Include all symbol types |
+| `--hover-timeout` | Max seconds per hover request (default: 10) |
+| `--batch-size` | Symbols per LSP batch (default: 20) |
+
+**Example:**
+
+```bash
+python main.py ../examples/demo.py ../examples -o demo.nodes.json
+```
+
+### Step 2: Use the Shiki transformer
 
 ```typescript
 import {
@@ -35,97 +99,97 @@ import {
   transformerTwoslashPython,
   rendererRichPython,
   renderMarkdown,
-  renderMarkdownInline
+  renderMarkdownInline,
 } from 'twoslash-python';
 
-// Create a Shiki transformer with Python LSP support
 const transformer = transformerTwoslashPython({
-  // Enable explicit trigger with `twoslash` comment
   explicitTrigger: true,
-
-  // Configure the renderer
   renderer: rendererRichPython({
     renderMarkdown,
-    renderMarkdownInline
+    renderMarkdownInline,
   }),
-
-  // Specify supported languages
   langs: ['python'],
-  langAlias: {
-    python: 'python'
-  },
-
-  // Configure the twoslasher
-  twoslasher: createTwoslasherPython({})
+  twoslasher: createTwoslasherPython({}),
 });
 ```
 
-### Using in Documentation
+Then pass `transformer` to Shiki's `codeToHtml` or use it in your documentation framework. The code block's metadata should include a `json_file_path` pointing to the generated JSON:
 
-In your documentation, add the `twoslash` marker to Python code blocks you want to enhance:
-
-```markdown
-```python twoslash
+````markdown
+```python twoslash json_file_path=./demo.nodes.json
 def greet(name: str) -> str:
-    """Greet a person by name.
-
-    Args:
-        name: The person's name
-
-    Returns:
-        A greeting message
-    """
+    """Greet a person by name."""
     return f"Hello, {name}!"
 ```
-```
-
-The transformer will:
-1. Process the code through the Python Language Server
-2. Extract type information and documentation
-3. Add interactive hover tooltips
-4. Highlight any errors or warnings
-5. Render the enhanced code block with Shiki
+````
 
 ## API Reference
 
-### `createTwoslasherPython(options?: CreateTwoslashPythonOptions)`
+### `createTwoslasherPython(options?)`
 
-Creates a Python-specific twoslasher instance that processes code through the Python Language Server.
+Creates a Python twoslasher that reads pre-generated JSON node data.
 
-#### Options:
-- `eslintConfig`: ESLint configuration for code analysis
-- `debugShowGeneratedCode`: Show generated code in output (default: false)
+### `transformerTwoslashPython(options)`
 
-### `transformerTwoslashPython(options: TransformerTwoslashPythonOptions)`
+Returns a Shiki transformer for Python code blocks.
 
-Creates a Shiki transformer that processes Python code blocks.
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `twoslasher` | `TwoslashShikiFunctionPython` | *required* | The twoslasher instance |
+| `explicitTrigger` | `boolean \| RegExp` | `false` | Only process blocks with `twoslash` marker |
+| `renderer` | `TwoslashRenderer` | `rendererRichPython()` | Renderer for output |
+| `langs` | `string[]` | `['python']` | Languages to process |
+| `langAlias` | `Record<string, string>` | `{ python: 'python', py: 'python' }` | Language aliases |
+| `throws` | `boolean` | `true` | Throw on errors |
 
-#### Options:
-- `explicitTrigger`: Enable explicit triggering with `twoslash` marker (boolean | RegExp)
-- `renderer`: Configure how the enhanced code is rendered
-- `langs`: Array of supported languages (default: ['python'])
-- `langAlias`: Language alias mappings
-- `twoslasher`: The twoslasher instance to use
+### `rendererRichPython(options?)`
 
-### `rendererRichPython(options?: RendererRichOptionsPython)`
+Configures how enhanced code blocks are rendered.
 
-Configures how the enhanced code blocks are rendered.
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `renderMarkdown` | `function` | pass-through | Markdown renderer for docs |
+| `renderMarkdownInline` | `function` | pass-through | Inline markdown renderer |
+| `processHoverInfo` | `function` | cleanup processor | Custom type info formatter |
+| `errorRendering` | `'line' \| 'hover'` | `'line'` | How errors are displayed |
+| `classExtra` | `string` | `'twoslash-python'` | Extra CSS class on elements |
 
-#### Options:
-- `renderMarkdown`: Function to render markdown content
-- `renderMarkdownInline`: Function to render inline markdown
-- Additional styling and rendering options
+## CSS
 
-## Contributing
+The transformer adds CSS classes you can style. The main classes follow the `@shikijs/twoslash` convention:
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+- `.twoslash` -- wrapper on the `<pre>` element
+- `.twoslash-hover` -- hoverable token
+- `.twoslash-popup-container` -- the popup box
+- `.twoslash-popup-code` -- type info inside popup
+- `.twoslash-popup-docs` -- documentation inside popup
+- `.twoslash-error` -- error-highlighted token
+- `.twoslash-highlighted` -- manually highlighted range
 
-## License
+See the [`@shikijs/twoslash` style reference](https://shiki.style/packages/twoslash#css) for a complete CSS example.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Build TypeScript
+npm run build
+
+# Lint
+npm run lint
+
+# Format
+npm run format
+```
 
 ## Acknowledgments
 
-- Built on top of [Shiki](https://shiki.style/), the beautiful syntax highlighter
-- Inspired by [TypeScript's Twoslash](https://www.typescriptlang.org/dev/twoslash/)
-- Uses [Python Language Server](https://github.com/python-lsp/python-lsp-server) for type information and documentation
+- Built on [Shiki](https://shiki.style/)
+- Inspired by [Twoslash](https://twoslash.netlify.app/) for TypeScript
+- Uses [multilspy](https://github.com/microsoft/monitors4codegen) for Python LSP integration
+
+## License
+
+[MIT](./LICENSE) -- Julien Blanchon

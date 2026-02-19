@@ -5,16 +5,14 @@
 import type {
   CodeToHastOptions,
   ShikiTransformer,
-  ShikiTransformerContext,
   ShikiTransformerContextMeta,
 } from '@shikijs/types';
 import type { Element, ElementContent, Text } from 'hast';
-import type { TwoslashExecuteOptions, TwoslashGenericFunction } from 'twoslash';
+import type { TwoslashExecuteOptions } from 'twoslash';
 import type { ModuleResolutionKind } from 'typescript';
 import type {
   TransformerTwoslashOptions,
   TwoslashRenderer,
-  TwoslashShikiFunction,
   TwoslashShikiReturn,
 } from '@shikijs/twoslash/core';
 import { splitTokens } from '@shikijs/core';
@@ -112,7 +110,6 @@ export function transformerTwoslashPython(
 
   return {
     preprocess(code: string) {
-      console.log('this.options.meta', this.options.meta);
       const lang = this.options.lang || '';
       const resolvedLang = lang in langAlias ? langAlias[lang] : lang;
 
@@ -131,7 +128,6 @@ export function transformerTwoslashPython(
           this.meta.twoslash = twoslash;
           this.options.lang = twoslash.meta?.extension || lang;
 
-          console.log('filter passed', code);
           return twoslash.code;
         } catch (error: unknown) {
           const result = onTwoslashError(error as Error, code, lang, {});
@@ -139,14 +135,11 @@ export function transformerTwoslashPython(
           else return undefined;
         }
       } else {
-        console.log('filter failed', code);
         return code;
       }
     },
     tokens(tokens) {
-      console.log('Starting tokens with tokens', tokens);
       const twoslash = map.get(this.meta);
-      console.log('twoslash', twoslash);
       if (!twoslash) return;
 
       // Break tokens at the boundaries of twoslash nodes
@@ -289,7 +282,6 @@ export function transformerTwoslashPython(
 
         switch (node.type) {
           case 'error': {
-            console.log('error node', node);
             if (renderer.nodeError) {
               tokens.forEach((token) => {
                 tokensSkipHover.add(token);

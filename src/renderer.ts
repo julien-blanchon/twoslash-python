@@ -298,7 +298,6 @@ export function rendererRichPython(options: RendererRichOptionsPython = {}): Two
     if (info.docs) {
       const docs = processHoverDocs(info.docs) ?? info.docs;
       if (docs) {
-        console.log('docs', docs);
         const children = renderMarkdown.call(this, docs);
         popupContents.push(
           extend(hast?.popupDocs, {

@@ -306,15 +306,12 @@ class PyTwoslash:
         # Extract symbols using AST
         symbols: list[Symbol] = extract_symbols(content)
 
-        print(f"Symbols before filtering: {len(symbols)}")
-        # Save symbols in symbols.json
-        Path("symbols.json").write_text(
-            json.dumps([asdict(symbol) for symbol in symbols], indent=2),
-            encoding="utf-8",
-        )
-        # Filter out the symbols
+        self.logger.debug(f"Found {len(symbols)} symbols before filtering")
+
+        # Filter symbols by kind
         symbols = [symbol for symbol in symbols if symbol.type in self.symbol_kinds]
-        print(f"Symbols after filtering: {len(symbols)}")
+
+        self.logger.debug(f"Found {len(symbols)} symbols after filtering")
 
         # Start the LSP server for hover information
         async with self.async_lsp.start_server():
@@ -330,9 +327,6 @@ class PyTwoslash:
                 # Create hover tasks for this batch
                 hover_tasks = []
                 for symbol in batch:
-                    print(
-                        f"Processing symbol: {symbol.text} with params: {file_path}, {symbol.end.line}, {symbol.end.character}"
-                    )
                     line = symbol.end.line - 1
                     if symbol.end.line == symbol.start.line:
                         character = (

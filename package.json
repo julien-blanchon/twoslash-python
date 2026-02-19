@@ -1,7 +1,7 @@
 {
   "name": "twoslash-python",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Twoslash generator for Python - Enhance your Python documentation with TypeScript-like type information",
   "author": "Julien Blanchon <julien@blanchon.cc>",
   "license": "MIT",
@@ -50,6 +50,7 @@
     "@shikijs/twoslash": "^3.2.1",
     "@types/bun": "latest",
     "@types/jest": "^29.5.12",
+    "@types/node": "^25.3.0",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
     "eslint": "^8.57.0",
@@ -64,6 +65,9 @@
     "@shikijs/core": "^3.2.1",
     "@shikijs/types": "^3.2.1",
     "@typescript/twoslash": "^3.2.9",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-gfm": "^3.0.0",
+    "mdast-util-to-hast": "^13.2.0"
   },
   "engines": {
     "node": ">=16.0.0"
